@@ -1,0 +1,348 @@
+/**
+ * CSS Resets
+ */
+
+html {
+    font-size: 16px;
+    font-family: Alaska, sans-serif;
+    /* simulate 100vh */
+    height: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+/* Main body */
+body {
+    /* simulate 100vh on old browsers */
+    min-height: 100%;
+}
+
+main {
+    position:relative;
+    height:100%;
+}
+
+/* Center content of entire page */
+header > section > *,
+main > section > *,
+footer > section > * {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+section.noscript-warning span {
+    padding: 0.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e70c0c;
+}
+
+main > section.description {
+    background-color: #18736d;
+    background-image: linear-gradient(120deg, #255b98, #18736d);
+    color: white;
+    padding: 1rem 0;
+}
+
+main > section.description > h1,
+main > section.description > h2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+main > section.description > h1 {
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+    font-size: 2.75rem;
+}
+
+main > section.description > h2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+main > section.file-process {
+    padding: 1rem 0;
+}
+
+main > section.file-process > div {
+    padding: 1rem 0.5rem;
+}
+
+main #HTML-file-upload {
+    display: none;
+}
+
+main section.file-process button.action-button,
+main section.file-process label.action-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    background-color: #9048ad;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+main section.file-process button.action-button:hover,
+main section.file-process label.action-button:hover {
+    background-color: #8921b3;
+}
+
+main section.file-process button.action-button:disabled {
+    color: #f5f5f5;
+    background-color: #bd81d4;
+}
+
+main section.file-process button.action-button--cancel,
+main section.file-process label.action-button--cancel {
+    color: white;
+    background-color: #ada348;
+}
+
+main section.file-process button.action-button--cancel:hover,
+main section.file-process label.action-button--cancel:hover {
+    background-color: #afa971;
+}
+
+main section.file-process button.action-button--cancel:disabled,
+main section.file-process label.action-button--cancel:disabled {
+    color: #f5f5f5;
+    background-color: #7a764f;
+}
+
+main section.file-process button.action-button--reset {
+    background-color: #f51b1b;
+}
+
+main section.file-process button.action-button--reset:hover {
+    background-color: #f51b1b;
+}
+
+main section.file-process button.action-button--reset:disabled {
+    color: #f5f5f5;
+    background-color: #c08484;
+}
+
+main section.file-process button.action-button--select {
+    color: #546E7A;
+    background-color: #9bf14a;
+}
+
+main section.file-process button.action-button--select[data-selected="true"] {
+    color: white;
+    background-color: #00c72b;
+    border: 2px solid #008b1e;
+    margin: -2px;
+}
+
+main section.file-process button.action-button--select:hover {
+    color: #37474f;
+    background-color: #b8f77d;
+}
+
+main section.file-process button.action-button--select:hover[data-selected="true"] {
+    color: white;
+    background-color: #00df13;
+}
+
+main section.file-process button.action-button--select:disabled {
+    color: #f5f5f5;
+    background-color: #729c4b;
+}
+
+main section.file-process button.action-button.action-button--small {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+main section.file-process #process-status {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+main section .controls--hidden {
+    display: none !important;
+}
+
+main section.file-process div.controls fieldset {
+    width: 23rem;
+    float: left;
+    margin-right: 1rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0.75rem 0.5rem 0;
+}
+
+main section.file-process div.controls fieldset legend {
+    font-weight: bold;
+}
+
+main section.file-process div.controls input[type="radio"]:checked + label {
+    font-weight: bold;
+}
+
+main section.file-process div.controls div.controls__radio {
+    display: inline-block;
+}
+
+main section.file-process div.process-data {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+main section.file-process div.process-data.process-data--hidden {
+    display: none !important;
+}
+
+main section .controls__toggle-filter {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #1f0404;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+main section .controls__toggle-filter .controls__toggle-label {
+    display: inline-block;
+    background-color: #eeeeee;
+    border-radius: 0.25rem 0.25rem 0 0;
+    border-bottom: 1px solid #1f0404;
+    padding: 0.5rem 0.5rem;
+    font-weight: bold;
+    width: 100%;
+}
+
+main section .controls__toggle-filter .controls__toggle-options {
+    padding: 0.5rem;
+}
+
+main section .controls__toggle-filter.controls__toggle-filter--open .controls__toggle-options {
+    display: inline-block;
+}
+
+main section .controls__toggle-filter.controls__toggle-filter--close .controls__toggle-options {
+    display: none;
+}
+
+main section .controls__toggle-filter.controls__toggle-filter--close .controls__toggle-label {
+    border-bottom: none;
+}
+
+/* class to center the content of a div inside a parent, the parent must have position: relative */
+section div.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+section div.center-text {
+    text-align: center;
+}
+
+main section div.tables {
+    border: 1px solid #1f0404;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+main section div.tables.tables--hidden {
+    display: none;
+}
+
+main section div.tables div.tables__overlay {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    opacity: 0.5;
+    background-color: #546E7A;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main section div.tables div.tables__overlay.tables__overlay--show {
+    display: block !important;
+}
+
+main section div.tables .tables__controls {
+    padding: 0 0.5rem 0.5rem;
+    border-bottom: 1px solid black;
+}
+
+main section div.tables .tables__controls .tables__selected-label {
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+main section div.tables__container {
+    padding: 0 0.5rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+main section div.tables__container article.tables__table {
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+main section div.tables__container article.tables__table header {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid black;
+    border-radius: 0.25rem 0.25rem 0 0;
+    background-color: #e5e5e5;
+}
+
+/* table title label */
+main section div.tables__container article.tables__table header > span {
+    font-weight: bold;
+    margin-right: 1.5rem;
+}
+
+main section div.tables__container article.tables__table header > button {
+    margin-right: 0.5rem;
+}
+
+main section div.tables__container article.tables__table table {
+    padding: 0 0.5rem;
+}
+
+main section div.tables__container article.tables__table table td.hidden-rows {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 0.25rem;
+}
+
+main section div.tables__container article.tables__table a.table__download-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-left: 1rem;
+}
+
+main section div.tables__container article.tables__table a.table__download-link:hover {
+    color: #353434;
+}

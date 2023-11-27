@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Nikolay Kolov">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Client Side, Table, Text File, CSV, Tab Sepatared">
+    <meta name="description" content="HTML Table to Text File Converter Client Side only v0.3">
+    <title>HTML Table to Text File Converter</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <section class="noscript-warning">
+            <div>
+                <noscript>
+                    <span>
+                        Please enable JavaScript to use this tool.
+                    </span>
+                </noscript>
+            </div>            
+        </section>
+    </header>
+    <main>
+        <section class="description">
+            <h1>
+                HTML Table to text file converter
+            </h1>
+            <h2>
+                Convert an HTML file with table/s to an CSV/tab separated text file. <br />
+                The generated text file will be the same as copying the table from the HTML file and pasting it in Excel in cells formatted as Text in order to preserve as close as possible the original values and formatting as seen in the browser. <br />
+                The HTML tables should contain no formatting that would interfere with data processing (i.e. hidden elements in table data).
+            </h2>
+        </section>
+        <section class="file-process">
+            <div id="file-controls-init">
+                <div class="controls">
+                    <input type="file" id="HTML-file-upload" name="HTML-file-upload" accept=".htm, .html, .xhtml, .dhtml" />
+                    <label for="HTML-file-upload" id="HTML-file-upload-label" class="action-button">Upload a file</label>
+                    <button id="reset-button" class="action-button action-button--reset controls--hidden" disabled>
+                        Reset
+                    </button>
+                </div>
+                <div id="process-status">
+                    Upload a file to begin processing
+                </div>
+                <div id="file-controls-secondary" class="controls controls--hidden">
+                        <div id="toggle-convert-options" class="controls__toggle-filter controls__toggle-filter--open">
+                            <p id="toggle-convert-options-label" class="controls__toggle-label">Hide processing options</p>
+                            <div class="controls__toggle-options controls__toggle-options--open">
+                                <div class="controls__radio">
+                                    <fieldset>
+                                        <legend>Select output text file format:</legend>
+                                        <div>
+                                        <input type="radio" id="csv" name="fileFormat" value="csv" checked />
+                                        <label for="csv">Comma Separated Value</label>
+                                        </div>
+                                        <div>
+                                        <input type="radio" id="tab" name="fileFormat" value="tab" />
+                                        <label for="tab">Tab Separated text file</label>
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <fieldset>
+                                        <legend>Select output text file newline character:</legend>
+                                        <div>
+                                        <input type="radio" id="crlf" name="newLine" value="crlf" checked />
+                                        <label for="crlf">Carriage Return Line Feed</label>
+                                        </div>
+                                        <div>
+                                        <input type="radio" id="lf" name="newLine" value="lf" />
+                                        <label for="lf">Line Feed</label>
+                                        </div>
+                                    </fieldset>
+        
+                                    <fieldset>
+                                        <legend>Convert nobreak space to normal space:</legend>
+                                        <div>
+                                        <input type="radio" id="nbsp-yes" name="convertNbsp" value="nbsp-yes" checked />
+                                        <label for="nbsp-yes">Yes</label>
+                                        </div>
+                                        <div>
+                                        <input type="radio" id="nbsp-no" name="convertNbsp" value="nbsp-no" />
+                                        <label for="nbsp-no">No</label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+               
+                <div id="process-data" class="tables tables--hidden">
+                    <div class="tables__overlay"></div>
+                    <div class="tables__controls">
+                        <button id="select-all" class="action-button action-button--small">
+                            Select all
+                        </button>
+                        <button id="process-selected" class="action-button action-button--small" disabled>
+                            Process selected
+                        </button>
+                        <span class="tables__selected-label">
+                            0 tables selected
+                        </span>
+                    </div>
+                    <div class="tables__container">
+                </div>
+            </div>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    <!--    
+            Load JavaScript as soon as page loads and DOM is rendered by placing it at bottom and using the defer tag.
+            Split JavaScript code in separate files and load them without using ES6 modules.
+            This means loading first the "modules" and after that loading the file where the "modules" are used.
+            The most dependent file is loaded last.
+    -->
+    <script type="text/javascript" src="js/lib/elementTextProperty.js" defer></script>
+    <script type="text/javascript" src="js/lib/escapeHTML.js" defer></script>
+    <script type="text/javascript" src="js/lib/forceDownload.js" defer></script>
+    <script type="text/javascript" src="js/lib/generateTextFile.js" defer></script>
+    <script type="text/javascript" src="js/main.js" defer></script>
+</body>
+</html>
