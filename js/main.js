@@ -147,7 +147,6 @@ function reset() {
 
     // If file reader is still in status loading (readyState === 1), abort it 
     if (reader.readyState === 1) {
-        console.log('reader.readyState abort');
         abortFileRead(reader);
     }
 
@@ -182,7 +181,6 @@ function reset() {
 function hanldeOnLoad(e) {
     // Can only abort file read
     resetButton.disabled = true;
-    console.log(e.type + ": " + e.loaded);
     fileContents = reader.result;
     var file = fileInput.files[0];
     statusEl.innerHTML = labels.processingFileHTMLMB(file.name, file.size);
@@ -194,7 +192,6 @@ function hanldeOnLoad(e) {
 }
 
 function hanldeOnError(e) {
-    console.log(e.type + ": " + e.loaded);
     statusEl[elementTextProperty(statusEl)] = labels.processingFileError;
 }
 
@@ -242,7 +239,6 @@ function parseHTML() {
     var errorNode = docFP.querySelector("parsererror");
 
     if (errorNode) {
-        console.log('parsererror');
         statusEl[elementTextProperty(statusEl)] = labels.processingFileHTMLError;
     } else {
         var tablesArray = docFP.querySelectorAll('table');
@@ -344,11 +340,22 @@ function displayTables(tablesArray) {
 // Generate tab delimited text file content
 function createTabDelimitedFile(event) {
     statusEl[elementTextProperty(statusEl)] = labels.generateFile;
-    console.log('createTabDelimitedFile tableElement', HTMLTables[parseInt(event.target.dataset.tableId)]);
     var file = generateTextFile([parseInt(event.target.dataset.tableId)], optionsConvertFile)[0];
     var filename = fileInput.files[0].name;
+    filename = filename.substring(0, extIndex)
     var extIndex = filename.lastIndexOf('.');
-    filename = filename.substring(0, extIndex) + '.txt';
+
+    // choose file extension
+    var fileExt = '.csv';
+    if (optionsConvertFile.fileFormat === 'tab') {
+        fileExt = '.txt'
+    }
+
+    // add number of table if more than 1 table is present in the text file
+    if (HTMLTables.length > 1) {
+        filename = filename + ' Table ' + (parseInt(event.target.dataset.tableId) + 1);
+    }
+    filename = filename + fileExt;
     statusEl[elementTextProperty(statusEl)] = labels.generateFileSuccess;
     forceDownload(filename, file.fileContent);
 }
@@ -447,7 +454,6 @@ function handleProcessSelected() {
             }
         }
 
-        console.log('handleProcessSelected optionsConvertFile', optionsConvertFile)
         var files = generateTextFile(tableIds, optionsConvertFile);
 
         for(var j = 0; j < files.length; j++) {
@@ -469,7 +475,19 @@ function handleProcessSelected() {
     
             var filename = fileInput.files[0].name;
             var extIndex = filename.lastIndexOf('.');
-            filename = filename.substring(0, extIndex) + '.txt';
+            filename = filename.substring(0, extIndex)
+            // choose file extension
+            var fileExt = '.csv';
+            if (optionsConvertFile.fileFormat === 'tab') {
+                fileExt = '.txt'
+            }
+
+            // add number of table if more than 1 table is present in the text file
+            if (tablesElems.length > 1) {
+                filename = filename + ' Table ' + (parseInt(files[j].tableId) + 1);
+            }
+            
+            filename = filename + fileExt;
         
             var blob = new Blob([files[j].fileContent], {type:  "text/plain;charset=utf-8;"});
             var a = document.createElement('a');
