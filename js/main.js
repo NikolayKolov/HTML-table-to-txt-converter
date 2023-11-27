@@ -342,8 +342,8 @@ function createTabDelimitedFile(event) {
     statusEl[elementTextProperty(statusEl)] = labels.generateFile;
     var file = generateTextFile([parseInt(event.target.dataset.tableId)], optionsConvertFile)[0];
     var filename = fileInput.files[0].name;
-    filename = filename.substring(0, extIndex)
     var extIndex = filename.lastIndexOf('.');
+    filename = filename.substring(0, extIndex)
 
     // choose file extension
     var fileExt = '.csv';
